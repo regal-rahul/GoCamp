@@ -1,8 +1,14 @@
 <%- layout('layouts/boilerplate') %> 
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading"><%= err.message %></h4>
+            <div style="overflow-wrap: break-word;">
+                <%= err.stack %>
+            </div>
+            <hr>
+            <p class="mb-0">Dang It! Try again Later!</p>
+        </div>
+    </div>
+</div>
 
-<div class="alert alert-success" role="alert">
-    <h4 class="alert-danger">Error!</h4>
-    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-    <hr>
-    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-  </div>
