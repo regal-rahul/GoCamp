@@ -13,7 +13,7 @@ const reviews = require('./routes/reviews');
 
 mongoose.connect('mongodb://localhost:27017/go-camp', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 });
 
 
@@ -24,12 +24,7 @@ db.once("open", () => {
 });
 
 
-
-
-
 const app = express();
-
-
 
 
 app.engine('ejs', ejsMate)
@@ -39,7 +34,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/campgrounds', campgrounds);
 app.use('/campgrounds/:id/reviews' ,reviews);
@@ -47,7 +42,6 @@ app.use('/campgrounds/:id/reviews' ,reviews);
 app.get('/', (req, res) => {
     res.render('home');
 });
-
 
 
 app.all('*', (req, res, next) => {
