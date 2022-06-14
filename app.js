@@ -2,14 +2,15 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const { campgroundSchema, reviewSchema } = require('./schemas.js');
-const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
-const Campground = require('./models/campground');
 const { error } = require('console');
-const Review = require('./models/review');
+
+
 const campgrounds = require('./routes/campground');
+const reviews = require('./routes/reviews');
+
+
 mongoose.connect('mongodb://localhost:27017/go-camp', {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -38,18 +39,12 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
 
-
-
-
-
 app.use('/campgrounds', campgrounds);
+app.use('/campgrounds/:id/reviews' ,reviews);
 
 app.get('/', (req, res) => {
     res.render('home');
 });
-
-
-
 
 
 
