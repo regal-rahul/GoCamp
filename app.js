@@ -58,6 +58,7 @@ const validateReview = (req, res, next) => {
 }
 
 
+app.use('/campgrounds', campgrounds);
 
 app.get('/', (req, res) => {
     res.render('home');
