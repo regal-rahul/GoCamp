@@ -167,11 +167,11 @@
   opacity: 1;
 }
 
-.starability-coinFlip > input:focus + label {
+/* .starability-coinFlip > input:focus + label {
   outline: 1px dotted #999;
-}
+} */
 
-.starability-coinFlip .starability-focus-ring {
+/* .starability-coinFlip .starability-focus-ring {
   position: absolute;
   left: 0;
   width: 100%;
@@ -179,7 +179,7 @@
   outline: 2px dotted #999;
   pointer-events: none;
   opacity: 0;
-}
+} */
 
 .starability-coinFlip > .input-no-rate:focus ~ .starability-focus-ring {
   opacity: 1;
