@@ -13,10 +13,12 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
   cloudinary,
+  params: {
     folder: 'go-camp',
     allowedFormats: ['jpeg', 'png', 'jpg']
+  }
 });
- 
+
 module.exports = {
     cloudinary,
     storage
