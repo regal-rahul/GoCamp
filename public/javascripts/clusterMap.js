@@ -88,14 +88,12 @@ mapboxgl.accessToken = mapToken;
         });
 
         map.on('click', 'unclustered-point', (e) => {
-            const text = e.features[0].properties.popUpMarkup;
+            const { popUpMarkup } = e.features[0].properties;
             const coordinates = e.features[0].geometry.coordinates.slice();
             
             new mapboxgl.Popup()
                 .setLngLat(coordinates)
-                .setHTML(
-                    text
-                )
+                .setHTML(popUpMarkup)
                 .addTo(map);
         });
 
