@@ -1,6 +1,8 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+// if (process.env.NODE_ENV !== "production") {
+//   require("dotenv").config();
+// }
+
+require("dotenv").config();
 
 const express = require("express");
 const path = require("path");
@@ -45,6 +47,7 @@ app.use(mongoSanitize({
 }));
 
 const sessionConfig = {
+  name: "session",
   secret: "thisshloudbeabettersecret!",
   resave: false,
   saveUnintialized: true,
@@ -64,7 +67,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-  console.log(req.query);
   res.locals.currentUser = req.user;
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
