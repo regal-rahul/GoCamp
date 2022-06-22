@@ -24,6 +24,8 @@ const userRoutes = require("./routes/users");
 const campgroundRoutes = require("./routes/campground");
 const reviewRoutes = require("./routes/reviews");
 
+// const dbUrl = process.env.DB_URL;
+
 mongoose.connect("mongodb://localhost:27017/go-camp", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
