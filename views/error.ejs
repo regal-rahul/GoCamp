@@ -4,9 +4,11 @@
         <div class="alert alert-danger" role="alert">
             <h4 class="alert-heading"><%= err.message %></h4>
             <div style="overflow-wrap: break-word;">
-                <%= err.stack %>
+                <% if (process.env.NODE_ENV !== "production") { %> 
+                    <p><%= err.stack %></p>
+                <% } %>
             </div>
-            <hr>
+            <hr> 
             <p class="mb-0">Dang It! Try again Later!</p>
         </div>
     </div>
