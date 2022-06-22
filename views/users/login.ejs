@@ -1,20 +1,33 @@
 <%- layout('layouts/boilerplate') %>
 
-<h1>LOGIN</h1>
-<form action="/login" class="validated-form" method="post" novalidate>
-    <div class="mb-3">
-        <label class="form-label" for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username" required>
-        <div class="valid-feedback">
-            Looks Good!
+
+<div class="conatainer d-flex justify-content-center align-items-center">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 offset-md-3">
+            <div class="card shadow">
+                <img src="https://cdn.pixabay.com/photo/2020/01/11/12/50/kyrgyzstan-4757430_960_720.jpg" alt="mountain" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <form action="/login" class="validated-form" method="post" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" autofocus required>
+                            <div class="valid-feedback">
+                                Looks Good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Looks Good!
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-block">Login</button>
+                    </form>
+                </div>  
+            </div>
         </div>
     </div>
-    <div class="mb-3">
-        <label class="form-label" for="password">Password</label>
-        <input class="form-control" type="password" id="password" name="password" required>
-        <div class="valid-feedback">
-            Looks Good!
-        </div>
-    </div>
-    <button class="btn btn-success">Login</button>
-</form>
+</div>
+
