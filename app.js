@@ -28,7 +28,7 @@ const MongoStore = require('connect-mongo');
 
 // const dbUrl = process.env.DB_URL;
 
-const dbUrl = "mongodb://localhost:27017/go-camp";
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/go-camp";
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -101,9 +101,11 @@ app.use(
   })
 );
 
+const secret = process.env.SECRET || 'thisshloudbeabettersecret';
+
 const store = new MongoStore({
   mongoUrl: dbUrl,
-  secret: 'thisshloudbeabettersecret',
+  secret: 'thisshloudbeabettersecret!',
   touchAfter: 24 * 60 * 60
 });
 
