@@ -3,7 +3,7 @@ mapboxgl.accessToken = mapToken;
         container: 'cluster-map',
         style: 'mapbox://styles/mapbox/light-v10',
         center: [77.1025,28.7041],
-        zoom: 5
+        zoom: 4
     });
 
     // Add zoom and rotation controls to the map.
