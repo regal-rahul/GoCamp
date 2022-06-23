@@ -24,11 +24,12 @@ const userRoutes = require("./routes/users");
 const campgroundRoutes = require("./routes/campground");
 const reviewRoutes = require("./routes/reviews");
 
-const mondoDBStore = require("connect-mongo")(session);
+const MongoStore = require('connect-mongo');
 
 // const dbUrl = process.env.DB_URL;
 
-mongoose.connect("mongodb://localhost:27017/go-camp", {
+const dbUrl = "mongodb://localhost:27017/go-camp";
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -100,9 +101,18 @@ app.use(
   })
 );
 
+const store = new MongoStore({
+  mongoUrl: dbUrl,
+  secret: 'thisshloudbeabettersecret',
+  touchAfter: 24 * 60 * 60
+});
 
+store.on("error", function (e) {
+  console.log("session store error", e);
+})
 
 const sessionConfig = {
+  store,
   name: "session",
   secret: "thisshloudbeabettersecret!",
   resave: false,
@@ -113,6 +123,8 @@ const sessionConfig = {
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
 };
+
+
 app.use(session(sessionConfig));
 app.use(flash());
 app.use(passport.initialize());
